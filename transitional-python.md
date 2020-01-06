@@ -17,13 +17,18 @@ rights: © 2007 Jason M. Pittman, CC BY-SA 4.0
 
 This book was born out of the need to help students transition from core programming coursework in another language, chiefly C++. In my opinion, when you’re coming from another language, you probably only need to be aware of where and how Python is different. That is, a long form text repeating in-common concepts, structures, and idioms is largely wasted trees.
 
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{This is an example of how I will express a side or meta-thought that I feel is important but not directly related to the point in the main text.}
+\end{tabular}
+
+
 Thus, you should think of this book as an organized collection of lecture notes. What I am providing here is not a complete treatment of how to program using Python. Rather, I am providing a synthesis or summary. Thus, I do not spend much time on common idioms you can find amongst languages. Instead, I attempt to draw attention to Python’s syntax and semantics which differ from C or C++.  However, you undoubtedly will need to fill in some gaps with external sources. My recommendations are as follows.
 
 First, given that you have programming experience, try to leverage the concepts you know to draft what you think the same code may look like in Python. Then, look up the specific function in the Python documentation. As a last resort, use something like stackexchange.com or tutorialspoints.com to review specific examples.
 
 Second, if for somereason you do not have programming experience, try to draft in English what you think the code ought to do. Then, look for examples by searching for the nouns or verbs in your English draft in conjunction with python. You can learn quite a bit about programming in general and Python in specific by looking at code examples.
 
-Speaking of organization, this book has [n] chapters.
+Speaking of organization, this book has five chapters. You can read them in order or skip around based on chapter headings. Unlike a traditional programming text, the content doesn't really have a priority because we are just showing what is vital for an easy transition.
 
 Lastly, one of the things I detest in programming books is the lengthy blocks of text, followed by formatted code example, followed by more blocky text. I don’t find such presentation of programming material compelling or conducive to learning. Accordingly, you will find code examples centrally located (just like this paragraph you’re reading now) with the explanation for the code over in the wide margin.
 
@@ -43,10 +48,20 @@ First, we need the Python language interpreter. I strongly recommend grabbing th
 Speaking of which, we should clarify how the interpreter works real quick. The Python interpreter compiles our source to bytecode and then executes the program in the Python virtual runtime environment. If you see a file with the “.pyc” extension, that is a compiled version of the source. With Python 3, these bytecode files are in the *__pycache__* directory.
 
 The salient point here is the bytecode is not an equivalent to a compiled C or C++ binary. In fact, the bytecode is more similar to high-level languages such as Java or C# (.NET). That said, with Python, the compilation to bytecode has the benefit of speeding up subsequent runs of the program.
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{What do you think would happen if you executed the .pyc bytecode file directly? Try it and see!}
+\end{tabular}
 
 Further, the bytecode intermediary also has the benefit of making our Python programs truly cross platform. As long as a computing system has the interpreter installed, our program will execute exactly as intended.
 
-### Text Editor
+### Text editor
+Second, we need a text editor. Any text editor will do. Some people like modern text editors such as Sublime Text, Atom, or Visual Studio Code. Others prefer traditional editors such as vi, or emacs. Some may even opt for a full Integrated Development Environment
+
+Honestly, what you use doesn’t matter. My advice is to think about what other needs you may have and try to use a single solution to address as many of those needs as possible. Personally, I don’t like software sprawl and prefer applications that serve more than one purpose.
+\begin{flushright}
+    \textit{I use vim with a customized configuration.}
+\end{flushright}
+
 
 \pagebreak
 # Chapter 2
@@ -54,6 +69,26 @@ Further, the bytecode intermediary also has the benefit of making our Python pro
 Our second chapter is all about syntax.
 
 ### Whitespace
+Let's examine a foundational example, *Hello, World*. In C or C++, we code this as follows.
+
+```
+void main() {
+    printf("Hello, World!\n");
+}
+```
+Comparatively, in Python we code the same example in two ways. There is a simple *script* way and a formal *programming* manner.
+
+```
+print('Hello, World')
+```
+The above is a simple script statement using the *print* function. We don't have to call or instantiate anything above or below such a statement. This line by itself in a Python script (e.g., hello.py) will produce the expected result. Alternatively, we can wrap this in a more traditional programming feature.
+
+```
+def Hello():
+    print('Hello, World')
+```
+The above is a (user-defined) function.
+
 
 ### Variables and Pointers
 
@@ -66,9 +101,40 @@ Our second chapter is all about syntax.
 \pagebreak
 # Chapter 3
 ## Typing
-You may have noticed something when we were examining variables in the previous chapter. Specifically, the *typing* of variables. While I think the concept of static versus dynamic types is easily grasped, there actually is a bit of technical depth here that warrants further discussion.
+You may have noticed something when we were examining variables in the previous chapter. Specifically, the *typing* of variables. While do I think the concept of static versus dynamic types is easily grasped, there actually is a bit of technical depth here that warrants further discussion.
 
 ### Static and Dynamic
+Coming from the C/C++ languages, we are used to *static* variable typing. Meaning, when we declare a variable with a type such as *int*, *char*, and so forth we can only assign a corresponding value. Yes, we have idiomatic ways of working around this paradigm but stuff like type casting is an exception to the rule. 
+
+Consider something like:
+
+```
+    float c = 10.5;
+```
+
+We can compare the C/C++ static typing like in the above example to the following.
+
+```
+    c = 10.5
+```
+
+This is an example of *dynamic* typing and how Python handles variables. In this case, Python will treat the value as a floating-point number even though we didn't explicitly define the type.
+
+The major difference isn't the presence of the **float** type keyword. Rather, the keyword is necessary because statically typed languages have type checks at compile time. In contrast, a dynamically typed language classifies values at runtime. Thus, the following code ought to throw a compilation error.
+
+~~~
+    int x = 5;
+    char c = 'y';
+
+    x + y;
+~~~
+
+Let's clear up a little confusion here. First, just because Python is dynamically typed doesn't mean you can create and use variables all will nilly. There are type-value restrictions.
+
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{What do you think would happen if you executed the .pyc bytecode file directly? Try it and see!}
+\end{tabular}
+
 
 ### Type Checking
 
