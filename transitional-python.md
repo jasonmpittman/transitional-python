@@ -66,17 +66,21 @@ Honestly, what you use doesn’t matter. My advice is to think about what other 
 \pagebreak
 # Chapter 2
 ## Syntax
-Our second chapter is all about syntax.
+Our second chapter is all about syntax. We'll start with what must be the single largest shift for most students- scoping. Then, we'll take a look at variables. While we discuss *types* in Chapter 3, there are some general transitions with variables which we ought to discuss. The same is true for expressions. Lastly, we will look at how Python handles list comprehensions and some interesting differences in standard libraries.
 
-### Whitespace
-Let's examine a foundational example, *Hello, World*. In C or C++, we code this as follows.
+### Scoping
+Without a doubt, scoping or defining scope in Python presents the hardest syntatical transition. Let's look at the foundational example, *Hello, World*. In C or C++, we code this as follows.
 
 ```
 void main() {
     printf("Hello, World!\n");
 }
 ```
-Comparatively, in Python we code the same example in two ways. There is a simple *script* way and a formal *programming* manner.
+Scope is defined by the curly braces. Comparatively, in Python we can code the same example in two ways. There is a simple *script* way and a formal *programming* manner.
+
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{Think about the difference between stuffing all of your code into main() versus refactoring into functions.}
+\end{tabular}
 
 ```
 print('Hello, World')
@@ -87,10 +91,24 @@ The above is a simple script statement using the *print* function. We don't have
 def Hello():
     print('Hello, World')
 ```
-The above is a (user-defined) function.
+The above is a (user-defined) function or method depending on the surrounding context. More on that in chapter 4. Right now, the critical take away is the difference between language lexical markers for the scope. Yes, Python uses plain old whitespace instead of character-based fencing. 
 
+Parentheses are largely used the same between C/C++ and Python. There are no semi-colons but there is a colon in Python which lexically indicates the beginning of a new scope block.
 
 ### Variables and Pointers
+On the surface, it may seem like variables look, feel, and work identically between C/C++ and Python. Take for instance, a simple value assignment in C/C++.
+
+~~~
+    int value = 10;
+~~~
+
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{Can you code the equivalent Python statement? How about adding the variable to itself?}
+\end{tabular}
+
+The corresponding Python statement is similar enough. So too is how we use the variable. However, underneath the hood there is a significant difference between languages. In fact, second to the scoping discussion, I think this difference is important to work through when transitioning to Python.
+
+
 
 ### Expressions
 
