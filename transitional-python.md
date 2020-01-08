@@ -26,15 +26,15 @@ Thus, you should think of this book as an organized collection of lecture notes.
 
 First, given that you have programming experience, try to leverage the concepts you know to draft what you think the same code may look like in Python. Then, look up the specific function in the Python documentation. As a last resort, use something like stackexchange.com or tutorialspoints.com to review specific examples.
 
-Second, if for somereason you do not have programming experience, try to draft in English what you think the code ought to do. Then, look for examples by searching for the nouns or verbs in your English draft in conjunction with python. You can learn quite a bit about programming in general and Python in specific by looking at code examples.
+Second, if for some reason you do not have programming experience, try to draft in English what you think the code ought to do. Then, look for examples by searching for the nouns or verbs in your English draft in conjunction with python. You can learn quite a bit about programming in general and Python in specific by looking at code examples.
 
-Speaking of organization, this book has five chapters. You can read them in order or skip around based on chapter headings. Unlike a traditional programming text, the content doesn't really have a priority because we are just showing what is vital for an easy transition.
+Speaking of organization, this book has five chapters. You can read them in order or skip around based on chapter headings. Unlike a traditional programming text, the content doesn't really have a priority because we are focused on what is necessary to facilitate a transition.
 
-Lastly, one of the things I detest in programming books is the lengthy blocks of text, followed by formatted code example, followed by more blocky text. I don’t find such presentation of programming material compelling or conducive to learning. Accordingly, you will find code examples centrally located (just like this paragraph you’re reading now) with the explanation for the code over in the wide margin.
+Lastly, one of the things I detest in programming books is the lengthy blocks of text, followed by formatted code example, followed by more blocky text. I don’t find such presentation of programming material compelling or conducive to learning. Accordingly, you will find code examples centrally located (just like this paragraph you’re reading now) with a meta-discussion for the code in an offset, right justified text block.
 
-Regarding code example; yes, you should copy them. More so, you should read the code and make an educated guess as to what the code does.
+Speaking of code examples; yes, you should copy them. More so, you should read the code and make an educated guess as to what the code does. If you want to make serious progress, rewrite old C/C++ code into Python!
 
-A parting note about the margin text. Read it. Seriously, read it. Also, when a question appears you should answer it. Even better, read the question aloud and verbalize your answer. Trust me.
+A parting note about the meta-explanatory, offset text. Read it. Seriously, read it. Also, when a question appears you should answer it. Even better, read the question aloud and verbalize your answer. Trust me.
 
 \pagebreak
 
@@ -91,9 +91,32 @@ The above is a simple script statement using the *print* function. We don't have
 def Hello():
     print('Hello, World')
 ```
-The above is a (user-defined) function or method depending on the surrounding context. More on that in chapter 4. Right now, the critical take away is the difference between language lexical markers for the scope. Yes, Python uses plain old whitespace instead of character-based fencing. 
+The above is a (user-defined) function or method depending on the surrounding context. More on that in chapter 4. Right now, the critical take away is the difference between language lexical markers for the scope. You see, Python uses plain old whitespace instead of character-based fencing. Thus, every indent serves as a definition of scope. 
 
-Parentheses are largely used the same between C/C++ and Python. There are no semi-colons but there is a colon in Python which lexically indicates the beginning of a new scope block.
+A word of caution here: pick a whitespace standard for yourself and stick to it. Personally, I prefer four spaces and have my *tab* set accordingly. 
+
+Meanwhile, parentheses are largely used the same between C/C++ and Python. There are no semicolons to indicate the end of a statement. We *use* whitespace here as well insofar as a newline indicates...well, a new line or statement. Strictly speaking, you can use a semicolon but Python doesn't require it as C/C++ do. As well, we can use a semicolon to delimit multiple statements packed onto a single line. In pratice, don't do that however and stick to whitespace over semicolons.
+
+There is a colon in Python which is a lexical indication for the beginning of a new definition block (with definitions being functions, methods, classes, and so forth).
+
+To summarize, consider the following C++ snippet:
+```
+int main()
+{
+    int a = 0;
+    ++a;
+    {
+        int a = 1;
+        a = 42;
+    }
+}
+```
+How would you port this over to Python? What lexical symbols do we keep? Get rid of entirely? Substitute?
+
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{My advice: start with the low hanging fruit such as semicolons and braces. While you're coding the same snippet in Python, try to imagine how the Python interpreter digests the syntax.}
+\end{tabular}
+
 
 ### Variables and Pointers
 On the surface, it may seem like variables look, feel, and work identically between C/C++ and Python. Take for instance, a simple value assignment in C/C++.
