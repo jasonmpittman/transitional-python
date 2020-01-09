@@ -48,6 +48,7 @@ First, we need the Python language interpreter. I strongly recommend grabbing th
 Speaking of which, we should clarify how the interpreter works real quick. The Python interpreter compiles our source to bytecode and then executes the program in the Python virtual runtime environment. If you see a file with the “.pyc” extension, that is a compiled version of the source. With Python 3, these bytecode files are in the *__pycache__* directory.
 
 The salient point here is the bytecode is not an equivalent to a compiled C or C++ binary. In fact, the bytecode is more similar to high-level languages such as Java or C# (.NET). That said, with Python, the compilation to bytecode has the benefit of speeding up subsequent runs of the program.
+
 \begin{tabular}{p{8cm}|p{5cm}}
     & \textit{What do you think would happen if you executed the .pyc bytecode file directly? Try it and see!}
 \end{tabular}
@@ -58,10 +59,10 @@ Further, the bytecode intermediary also has the benefit of making our Python pro
 Second, we need a text editor. Any text editor will do. Some people like modern text editors such as Sublime Text, Atom, or Visual Studio Code. Others prefer traditional editors such as vi, or emacs. Some may even opt for a full Integrated Development Environment
 
 Honestly, what you use doesn’t matter. My advice is to think about what other needs you may have and try to use a single solution to address as many of those needs as possible. Personally, I don’t like software sprawl and prefer applications that serve more than one purpose.
+
 \begin{flushright}
     \textit{I use vim with a customized configuration.}
 \end{flushright}
-
 
 \pagebreak
 # Chapter 2
