@@ -28,11 +28,7 @@ First, given that you have programming experience, try to leverage the concepts 
 
 Second, if for some reason you do not have programming experience, try to draft in English what you think the code ought to do. Then, look for examples by searching for the nouns or verbs in your English draft in conjunction with python. You can learn quite a bit about programming in general and Python in specific by looking at code examples.
 
-Speaking of organization, this book has five chapters. You can read them in order or skip around based on chapter headings. Unlike a traditional programming text, the content doesn't really have a priority because we are focused on what is necessary to facilitate a transition.
-
-Lastly, one of the things I detest in programming books is the lengthy blocks of text, followed by formatted code example, followed by more blocky text. I don’t find such presentation of programming material compelling or conducive to learning. Accordingly, you will find code examples centrally located (just like this paragraph you’re reading now) with a meta-discussion for the code in an offset, right justified text block.
-
-Speaking of code examples; yes, you should copy them. More so, you should read the code and make an educated guess as to what the code does. If you want to make serious progress, rewrite old C/C++ code into Python!
+Speaking of organization, this book has five chapters. You can read them in order or skip around based on chapter headings. Unlike a traditional programming text, the content doesn't really have a priority because we are focused on what is necessary to facilitate a transition. Lastly, one of the things I detest in programming books is the lengthy blocks of text, followed by formatted code example, followed by more blocky text. I don’t find such presentation of programming material compelling or conducive to learning. Accordingly, you will find code examples centrally located (just like this paragraph you’re reading now) with a meta-discussion for the code in an offset, right justified text block.
 
 A parting note about the meta-explanatory, offset text. Read it. Seriously, read it. Also, when a question appears you should answer it. Even better, read the question aloud and verbalize your answer. Trust me.
 
@@ -40,7 +36,7 @@ A parting note about the meta-explanatory, offset text. Read it. Seriously, read
 
 # Chapter 1
 ## Tools
-The place to start any programming course is with tools. In other words, what exactly do we need to get started? With Python, the answer is, very little. In fact, we only need two things regardless of what operating system we are using.
+The place to start any programming course is with tools. In other words, what exactly do we need to get started? With Python, the answer is, very little. In fact, we only need two things regardless of what operating system we are using.  
 
 ### Python interpreter
 First, we need the Python language interpreter. I strongly recommend grabbing the latest stable version of Python 3. Pay attention here to what operating system you have as the interpreter needs to match. However, don’t worry about missing features or the like. One benefit of using a language like Python is the interpreter is operationally the same across all platforms.
@@ -55,14 +51,16 @@ The salient point here is the bytecode is not an equivalent to a compiled C or C
 
 Further, the bytecode intermediary also has the benefit of making our Python programs truly cross platform. As long as a computing system has the interpreter installed, our program will execute exactly as intended.
 
+Of course, this means we need the Python interpreter installed on *every* system hosting our program. Further, the interpreter needs to be at least of the same mainline version. This doesn't seem so strange given our experience with various C/C++ compilers but can be different for our understanding of runtime environments.
+
 ### Text editor
 Second, we need a text editor. Any text editor will do. Some people like modern text editors such as Sublime Text, Atom, or Visual Studio Code. Others prefer traditional editors such as vi, or emacs. Some may even opt for a full Integrated Development Environment
 
-Honestly, what you use doesn’t matter. My advice is to think about what other needs you may have and try to use a single solution to address as many of those needs as possible. Personally, I don’t like software sprawl and prefer applications that serve more than one purpose.
+Honestly, what you use doesn’t matter. My advice is to think about what other needs you may have and try to use a single solution to address as many of those needs as possible. Personally, I don’t like software sprawl and prefer applications that serve more than one purpose. I also personally like having the features I need and nothing more or less.
 
-\begin{flushright}
-    \textit{I use vim with a customized configuration.}
-\end{flushright}
+\begin{tabular}{p{8cm}|p{5cm}}
+   & \textit{This is why I use vim with a customized configuration. The software is lightweight, readily extended to fit precisely the feature set I require, and is useful in a variety of situations beyond programming in Python.}
+\end{tabular}
 
 \pagebreak
 # Chapter 2
@@ -131,8 +129,36 @@ On the surface, it may seem like variables look, feel, and work identically betw
 \end{tabular}
 
 The corresponding Python statement is similar enough. So too is how we use the variable. However, underneath the hood there is a significant difference between languages. In fact, second to the scoping discussion, I think this difference is important to work through when transitioning to Python.
+Therefore, let's start to wrap our minds around C/C++ referencing values through *variables* and Python referencing values through *names*. While it is technically correct to refer to both abstractly as variables, ignoring Python's *names* obfuscates an important point.
 
+Think about how everything in Unix is essentially a file. Now, imagine everything in Python is an object. More precisely, everything in Python is held by an object. Even a simple variable such as **value = 10** will exist within an object when our program is instantiated. 
 
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{Before you read on, take a guess as to why Python's variable form is important!}
+\end{tabular}
+
+There is one overarching reason for this being important: our integration with Python *names* is decoupled from memory addresses. In turn, this has two immediate benefits.
+
+```
+int list_of_ints[4] = {1, 2, 3, 4, 5};
+
+```
+This is a classic array example from C/C++. Will this compile? Furthermore, let's say that the list of assigned elements were **{1, 2, 3, 4}**. I want to operate on the array itself, say by adding a new element. Can I do that?
+
+```
+list_of_ints = [1, 2, 3]
+```
+Here, because we have a *name* within an object, we are not limited to what we initially declared. Not only can we rewrite the *type* such as **list_of_ints = 'This is my string'** but I can operate on the list itself using powerful built-in methods. Using the idea of adding an element, we get:
+
+```
+list_of_ints.append(4)
+```
+
+\begin{tabular}{p{8cm}|p{5cm}}
+     & \textit{What would be the output if we print the value of our appended list?}
+\end{tabular}
+
+The other immediate benefit is we do not have to use pointers and we can give next to no mind to stack and heap management problems. Actually, when I think about it for a few minutes there are other important benefits we ought to discuss.
 
 ### Expressions
 
