@@ -11,3 +11,7 @@ I use pandoc to compile:
 ```
 pandoc transitional-python.md -o transitional-python.pdf
 ```
+
+## Pay what it is worth
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/paypalme/jasonmpittman)  
+If you found this book useful, here is a link you can use to buy me a coffee or pay what you think a book like this is worth.
