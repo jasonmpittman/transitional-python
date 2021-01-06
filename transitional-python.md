@@ -161,6 +161,18 @@ list_of_ints.append(4)
 The other immediate benefit is we do not have to use pointers and we can give next to no mind to stack and heap management problems. Actually, when I think about it for a few minutes there are other important benefits we ought to discuss.
 
 ### Expressions
+Expressions are an area of difference between Python and C/C++ where the strictness of the latter provide more clarity compared to the former. At the same time, Python imparts a degree of flexibility we can learn to leverage as an advantage. Boolean expressions are particularly noteworthy for us. 
+
+Take for instance the traditional `True` and `False` values. In Python, there are a dozen or so expressions which result in `False`. In general, we have **constants** such as `None` or `False`, a **zero integer** `0`, along with a myriad of **empty collections** such as `{}` or `range(0)`. Evertying else gives us `True`. If you've experienced any discrete mathematics, this is loosely reminiscent of how an *implication* operates.
+
+More simply, in C/C++ we have:
+
+```
+bool isTrue = true;
+bool isFalse = 0;
+```
+
+Another related expression space with functional similarity but operational differences is in what we can refer to as **logical operators**. While not an exhaustive list, we do need to keep in mind that where Python expresses a logical **AND** as `and`, C/C++ express the same as `&&`. The same holds for **OR** and **NOT** - `or` versus `||` and `not` versus `!` respectively. I find that a good IDE or text editor plugin will help reinforce the transition from Python to C/C++ logical operators while we become accustomed to the syntax changes.
 
 ### Comprehensions
 
