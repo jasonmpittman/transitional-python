@@ -4,7 +4,7 @@ subtitle: A Handbook for Students
 author: 
     - Jason M. Pittman
 documentclass: scrartcl
-rights: © 2007 Jason M. Pittman, CC BY-SA 4.0
+rights: © 2020 Jason M. Pittman, CC BY-SA 4.0
 ---
 
 \pagebreak
@@ -174,16 +174,12 @@ bool isFalse = 0;
 
 Another related expression space with functional similarity but operational differences is in what we can refer to as **logical operators**. While not an exhaustive list, we do need to keep in mind that where Python expresses a logical **AND** as `and`, C/C++ express the same as `&&`. The same holds for **OR** and **NOT** - `or` versus `||` and `not` versus `!` respectively. I find that a good IDE or text editor plugin will help reinforce the transition from Python to C/C++ logical operators while we become accustomed to the syntax changes.
 
-### Comprehensions
-
-### Standard Library
-
 \pagebreak
 # Chapter 3
 ## Typing
-You may have noticed something when we were examining variables in the previous chapter. Specifically, the *typing* of variables. While do I think the concept of static versus dynamic types is easily grasped, there actually is a bit of technical depth here that warrants further discussion.
+You may have noticed something when we were examining variables in the previous chapter. Specifically, the *typing* of variables. While do I think the concept of **static** versus **dynamic** types is easily grasped, there actually is a bit of technical depth here that warrants further discussion. We have to wrangle the concept of **weak** versus **strong** type systems.
 
-### Static and Dynamic
+### Static and Dynamic, Weak and Strong
 Coming from the C/C++ languages, we are used to *static* variable typing. Meaning, when we declare a variable with a type such as *int*, *char*, and so forth we can only assign a corresponding value. Yes, we have idiomatic ways of working around this paradigm but stuff like type casting is an exception to the rule. 
 
 Consider something like:
@@ -209,19 +205,59 @@ The major difference isn't the presence of the **float** type keyword. Rather, t
     x + y;
 ~~~
 
-Let's clear up a little confusion here. First, just because Python is dynamically typed doesn't mean you can create and use variables all will nilly. There are type-value restrictions.
+Let's clear up a little confusion here. First, just because Python is dynamically typed doesn't mean you can create and use variables all will nilly. There are type-value restrictions. This is a major point of confusion. Fundamental language substrates seen in something like Perl allow for runtime interpretation of value type without restriction. This gives the appearance of *loose* typing. 
+
+Python is nothing like Perl in terms of types, being much closer to C\C++ but not identical. This is where we encounter the concepts of weak and strong typing. Perl will interpret and reinterpret value types and has the ability to swap a type during runtime. Python cannot and will not do that despite interpreting value type initially. Similarly, C\C++ will not swap types through inference-by-use.
+
+This is an exceedingly technical and deep area to explore if you find yourself duly interested in programming language design and implementation. Put simply, Python will infer a type upon declaration or use and once a type is inferred that type becomes fixed. Thus, there is operational equivalence to the static typing seen in C\C++.
 
 \begin{tabular}{p{8cm}|p{5cm}}
-    & \textit{What do you think would happen if you executed the .pyc bytecode file directly? Try it and see!}
+    & \textit{Why is it advantageous to have a strong dynamic typing system such as Python possess? In comparison, why would a weak static typing system be desirable?}
 \end{tabular}
-
-
-### Type Checking
 
 \pagebreak
 # Chapter 4
 ## Object-Orientation
 
+Python is fundamentally implemented around the concept of `object`. That is, the running program is encapsulated within the runtime substrate as an object whether or not we have object oriented constructs (e.g., classes, properties, methods) in the program.
+
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{What do you think would happen if you executed the .pyc bytecode file directly? Try it and see!}
+\end{tabular}
+
+\pagebreak
+# Chapter 5
+## Memory Management
+I saved the best for last. Best is relative, so for clarity here I mean *most different* coupled with *most dangerous*. The rest of transitional areas have enough similarlity or familiarity that we can work our way through them without creating negative outcomes for ourselves, the programs we develop, and our users. In constrast, memory can have catastrophic consequences. Let me repeat that so we're paying attention: mismanaging memory can have catastrophic outcomes. 
+
+Unfortunately, Python is not a language which imparts a healthy respect for memory. The reason is because Python is **memory managed**. This means we do not directly handle allocation or deallocation of memory space in our source code. On one hand, the lack of a need to manage memory ourselves frees us to instantiate and use objects at-will while offloading the burden of governing the objects to the runtime interpreter. More specifically, Python teaches us to rely on the **garbage collector** to pick up after us.
+
+Comparatively, C\C++ require that we deliberately and explicitly manage memory spaces. We have to understand allocation and whether our declaritive allocations are going onto the *heap* or *stack*. We also have to work with **pointers** and **reference** idioms. Transitioning from Python, we have never experienced any of these things.
+
+\begin{tabular}{p{8cm}|p{5cm}}
+    & \textit{How do you think garbage collection *knows* which objects to free in memory?}
+\end{tabular}
+
+An interesting overlap in name that has massive underlying differences is the *delete* operation. Python has `del` whereas C\C++ has `delete`. We might construe those as the same thing. They're not and understand the difference is material. Let's investigate a similar example in both languages.
+
+Here's a Python construction:
+```
+foo = 100
+bar = foo
+del foo
+del bar
+```
+
+Here's a similar C\C++ construction:
+```
+int* foo;
+foo = new int;
+*foo = 100;
+delete foo;
+```
 
 
-
+\pagebreak
+# Chapter 6
+## Summary and Checklist
+Here is a one line summary for us to consider: the transition from Python to C\C++ is straightfoward but has five areas we need to pay attention to if we're going to avoid danger. 
