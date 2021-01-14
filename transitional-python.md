@@ -15,7 +15,7 @@ rights: © 2020 Jason M. Pittman, CC BY-SA 4.0
 
 # Preface
 
-This book was born out of the need to help students transition from core programming coursework in another language, chiefly C++. In my opinion, when you’re coming from another language, you probably only need to be aware of where and how Python is different. That is, a long form text repeating in-common concepts, structures, and idioms is largely wasted trees.
+This book was born out of the need to help students transition from core programming coursework in another language, chiefly C++. In my opinion, when you’re coming from another language, you probably only need to be aware of where and how Python is different. That is, a long form text repeating in-common concepts, structures, and idioms is largely wasted trees. Likewise, if you happen to coming from a Python background, this text can help you understand where C++ is the same but different.
 
 \begin{tabular}{p{8cm}|p{5cm}}
     & \textit{This is an example of how I will express a side or meta-thought that I feel is important but not directly related to the point in the main text.}
@@ -218,12 +218,28 @@ This is an exceedingly technical and deep area to explore if you find yourself d
 \pagebreak
 # Chapter 4
 ## Object-Orientation
+Object-orientation is highly similar in concept between Python and C++ but quite disimilar in implementation. Thus, conceptually the fundamental design principles are easily transitioned between the two languages. Past that, we need to exhibit some caution.
 
-Python is fundamentally implemented around the concept of `object`. That is, the running program is encapsulated within the runtime substrate as an object whether or not we have object oriented constructs (e.g., classes, properties, methods) in the program.
+Caution can be managed better once we understand Python is fundamentally implemented around the concept of `object`. That is, the running program is encapsulated within the runtime substrate as an object whether or not we have object oriented constructs (e.g., classes, properties, methods) in the source code. In fact, everything in a Python program is treated as an instantiated `object`. Couple that with a lack of **access modifiers** and we can view Python as inherently *open* object-orientation. 
+
+The reason I use the term *open* is because everything within our Python program obviously can access to other everything else within the program. Yes, we can use a leading double underscore like `__privateMember` which invokes **name mangling** but is not truly private as we might understand an access modifier convention like `private string foo = "bar"`. We can also by convention prefix a member with a single underscore but that isn't language supported either.
 
 \begin{tabular}{p{8cm}|p{5cm}}
-    & \textit{What do you think would happen if you executed the .pyc bytecode file directly? Try it and see!}
+    & \textit{How should be design a Python program knowing that we cannot encapsulate `objects` as we might in C++?}
 \end{tabular}
+
+We're also limited in Python with how we can **overload** methods. Unlike other object-oriented languages, Python does not provide overloading by permitting multiple methods with identical names but different *signatures*. Instead, Python provides overloading by in a manner that is closer maybe to how we handle **constructors**. That is, we include a member in the signature with a default value which we can then check and handle withi nthe method body. For example
+
+```
+def method(self, value=None):
+    if value is not None:
+        do something
+    else
+        do something else
+```
+
+We can call `.method()` and have the first conditional block execute or call `.method("foo")` and get the second block to run. The syntax is odd at first but compact, simple. 
+
 
 \pagebreak
 # Chapter 5
@@ -260,4 +276,8 @@ delete foo;
 \pagebreak
 # Chapter 6
 ## Summary and Checklist
-Here is a one line summary for us to consider: the transition from Python to C\C++ is straightfoward but has five areas we need to pay attention to if we're going to avoid danger. 
+Here is a one line summary for us to consider: the transition from Python to C\C++, or vice-versa, is straightfoward but has five areas we need to pay attention to if we're going to avoid danger. Further, we should work to not construe the similarities between the languages as making the transition *easy*. We also shouldn't take the differences, which to be fair are more numerous, as making for an impossible task. To the contrary, the similarities and differences make for powerful options when considering which language to use to solve a particular problem.
+
+As a final takeaway, I suggest we recall that this book is intended to assist us in transitioning from core programming coursework in in one language to another. Accordingly, the content has many assumptions and limitations. This is not a *full* textbook in any shape or form. In fact, there's way more that we haven't covered particualy if we examined just similarities. Thus, let this serve as a stepping stone on our way towards understanding, being able to use two languages to develop programs.
+
+Good luck. 
