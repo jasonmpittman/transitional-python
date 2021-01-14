@@ -207,9 +207,9 @@ The major difference isn't the presence of the **float** type keyword. Rather, t
 
 Let's clear up a little confusion here. First, just because Python is dynamically typed doesn't mean you can create and use variables all will nilly. There are type-value restrictions. This is a major point of confusion. Fundamental language substrates seen in something like Perl allow for runtime interpretation of value type without restriction. This gives the appearance of *loose* typing. 
 
-Python is nothing like Perl in terms of types, being much closer to C\C++ but not identical. This is where we encounter the concepts of weak and strong typing. Perl will interpret and reinterpret value types and has the ability to swap a type during runtime. Python cannot and will not do that despite interpreting value type initially. Similarly, C\C++ will not swap types through inference-by-use.
+Python is nothing like Perl in terms of types, being much closer to C or C++ but not identical. This is where we encounter the concepts of weak and strong typing. Perl will interpret and reinterpret value types and has the ability to swap a type during runtime. Python cannot and will not do that despite interpreting value type initially. Similarly, C++ will not swap types through inference-by-use.
 
-This is an exceedingly technical and deep area to explore if you find yourself duly interested in programming language design and implementation. Put simply, Python will infer a type upon declaration or use and once a type is inferred that type becomes fixed. Thus, there is operational equivalence to the static typing seen in C\C++.
+This is an exceedingly technical and deep area to explore if you find yourself duly interested in programming language design and implementation. Put simply, Python will infer a type upon declaration or use and once a type is inferred that type becomes fixed. Thus, there is operational equivalence to the static typing seen in C++.
 
 \begin{tabular}{p{8cm}|p{5cm}}
     & \textit{Why is it advantageous to have a strong dynamic typing system such as Python possess? In comparison, why would a weak static typing system be desirable?}
@@ -248,13 +248,13 @@ I saved the best for last. Best is relative, so for clarity here I mean *most di
 
 Unfortunately, Python is not a language which imparts a healthy respect for memory. The reason is because Python is **memory managed**. This means we do not directly handle allocation or deallocation of memory space in our source code. On one hand, the lack of a need to manage memory ourselves frees us to instantiate and use objects at-will while offloading the burden of governing the objects to the runtime interpreter. More specifically, Python teaches us to rely on the **garbage collector** to pick up after us.
 
-Comparatively, C\C++ require that we deliberately and explicitly manage memory spaces. We have to understand allocation and whether our declaritive allocations are going onto the *heap* or *stack*. We also have to work with **pointers** and **reference** idioms. Transitioning from Python, we have never experienced any of these things.
+Comparatively, C and C++ require that we deliberately and explicitly manage memory spaces. We have to understand allocation and whether our declaritive allocations are going onto the *heap* or *stack*. We also have to work with **pointers** and **reference** idioms. Transitioning from Python, we have never experienced any of these things.
 
 \begin{tabular}{p{8cm}|p{5cm}}
     & \textit{How do you think garbage collection *knows* which objects to free in memory?}
 \end{tabular}
 
-An interesting overlap in name that has massive underlying differences is the *delete* operation. Python has `del` whereas C\C++ has `delete`. We might construe those as the same thing. They're not and understand the difference is material. Let's investigate a similar example in both languages.
+An interesting overlap in name that has massive underlying differences is the *delete* operation. Python has `del` whereas C and C++ has `delete`. We might construe those as the same thing. They're not and understand the difference is material. Let's investigate a similar example in both languages.
 
 Here's a Python construction:
 ```
@@ -264,7 +264,7 @@ del foo
 del bar
 ```
 
-Here's a similar C\C++ construction:
+Here's a similar C or C++ construction:
 ```
 int* foo;
 foo = new int;
@@ -276,7 +276,7 @@ delete foo;
 \pagebreak
 # Chapter 6
 ## Summary and Checklist
-Here is a one line summary for us to consider: the transition from Python to C\C++, or vice-versa, is straightfoward but has five areas we need to pay attention to if we're going to avoid danger. Further, we should work to not construe the similarities between the languages as making the transition *easy*. We also shouldn't take the differences, which to be fair are more numerous, as making for an impossible task. To the contrary, the similarities and differences make for powerful options when considering which language to use to solve a particular problem.
+Here is a one line summary for us to consider: the transition from Python to C++, or vice-versa, is straightfoward but has five areas we need to pay attention to if we're going to avoid danger. Further, we should work to not construe the similarities between the languages as making the transition *easy*. We also shouldn't take the differences, which to be fair are more numerous, as making for an impossible task. To the contrary, the similarities and differences make for powerful options when considering which language to use to solve a particular problem.
 
 As a final takeaway, I suggest we recall that this book is intended to assist us in transitioning from core programming coursework in in one language to another. Accordingly, the content has many assumptions and limitations. This is not a *full* textbook in any shape or form. In fact, there's way more that we haven't covered particualy if we examined just similarities. Thus, let this serve as a stepping stone on our way towards understanding, being able to use two languages to develop programs.
 
